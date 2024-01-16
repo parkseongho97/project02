@@ -1,14 +1,10 @@
 @charset "utf-8";
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@100;200;300;400;500&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
-  /* box-sizing: border-box; */
-}
-body {
-  font-family: "Noto Sans KR", sans-serif;
 }
 ul {
   list-style: none;
@@ -21,80 +17,90 @@ img {
   max-width: 100%;
   vertical-align: middle;
 }
-
 .cf::after {
   content: "";
   display: block;
   clear: both;
 }
+
 .row {
-  max-width: 1289px;
-  border: 0px solid #fff;
+  max-width: 1170px;
   margin: 0 auto;
 }
 
-/* header */
-
 #header {
-  background: rgba(0, 0, 0, 0.47);
+  border: 0px solid #000;
+  background: #fff;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 99; /* 박스겹침이 발생했을때 겹치는 순서를 제어함. 높은값이 위로 올라옴 */
+  z-index: 99;
 }
 #header h1 {
   float: left;
+  border: 0px solid #000;
   padding: 20px 0;
 }
 #header #nav {
   float: right;
 }
-/* #header #nav .depth1 { background:pink } */
 #header #nav .depth1 > li {
   float: left;
-  margin-left: 48px;
-  color: #fff;
-  font-size: 18px;
+  font-size: 14px;
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-weight: 900;
+  margin-left: 30px;
   position: relative;
-  border-top: 3px solid transparent;
 }
 #header #nav .depth1 > li > a {
-  line-height: 87.81px;
-  height: 87.81px;
+  height: 88.3px;
+  line-height: 88.3px;
   display: block;
+  padding: 0 25px 0 15px;
+  position: relative;
 }
-#header #nav .depth1 > li:hover {
-  color: greenyellow;
-  transition: all 0.2s;
-  border-top: 3px solid greenyellow;
+#header #nav .depth1 > li > a::after {
+  display: block;
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  font-size: 10px;
+  font-family: "FontAwesome";
+  content: "\f107";
+  opacity: 0.3;
+}
+#header #nav .depth1 > li > a:hover {
+  background: rgba(0, 0, 0, 0.03);
 }
 #header #nav .depth1 > li:hover .depth2 {
   display: block;
-  transition: all 0.5s;
 }
-
 #header #nav .depth2 {
   position: absolute;
   top: 100%;
   left: 0;
   width: 200px;
-  background: #fff;
-  color: #13213b;
+  background: #333;
+  color: #fff;
+  font-size: 13px;
+  font-family: "Noto Sans KR";
+  font-weight: 300;
   display: none;
-  border-top: 3px solid #fff;
 }
-
 #header #nav .depth2 > li > a {
   display: block;
-  padding: 12px 20px;
-  font-size: 14px;
-  color: #212934;
+  padding: 7px 15px;
+  background: rgba(0, 0, 0, 0.05);
 }
 #header #nav .depth2 > li > a:hover {
-  background: #f9f9fb;
+  display: block;
+  padding: 7px 15px;
+  background: rgba(0, 0, 0, 0.15);
 }
-/* section .slide */
+
+/* 슬라이드 구역 */
 #section .slideOuter .slideInner {
   position: relative;
 }
@@ -122,226 +128,362 @@ img {
 }
 #section .slideOuter .slideInner ul.slick-dots li {
   display: inline-block;
-  mask-origin: 0 5px;
+  margin: 0 5px;
 }
 #section .slideOuter .slideInner ul.slick-dots li button {
-  border: none;
-  width: 20px;
-  height: 20px;
-  margin: 0 5px;
-  border-radius: 50px;
-  text-indent: -9999px;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.5
-  ); /*background: #f0f0f0; 가 버튼 디폴트 */
+  width: 16px;
+  height: 16px;
+  text-indent: 9999px;
   overflow: hidden;
-  transition: all 0.2s;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border: 5px solid transparent;
 }
 #section .slideOuter .slideInner ul.slick-dots li.slick-active button {
-  background: greenyellow;
-  width: 50px;
+  background: #fff;
+  border: 5px solid #000;
 }
 
-/* 슬라이더 자동재생 멈춤 버튼 */
+/* 슬라이더 멈춤 버튼 */
 #section .slideOuter {
   position: relative;
 }
 #section .slideOuter .plapau {
   position: absolute;
-  bottom: 47px;
+  bottom: 50px;
   left: 50%;
   font-size: 20px;
-  color: white;
-  margin-left: 60px;
+  margin-left: 45px;
+  color: #000;
 }
 
 #section .slide {
-  /* 자식이 부모를 기준으로 배치될때 부모한테 주는 속성 */
   position: relative;
+  /* background-image: url(../image/mainslide1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  /* 배경이미지는 높이가 있어야 보임. 100vh는 화면이랑 같은 높이를 뜻함 */
+  height: 100vh;
 }
-#section .slide img {
-  width: 100%;
+#section .slide1 {
+  /* background-image: url(../image/mainslide1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  background: url(../img/slide01.jpg) no-repeat center / cover;
+  /* 배경이미지는 높이가 있어야 보임. 100vh는 화면이랑 같은 높이를 뜻함 */
+}
+#section .slide2 {
+  /* background-image: url(../image/mainslide1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  background: url(../img/slide02.jpg) no-repeat center / cover;
+  /* 배경이미지는 높이가 있어야 보임. 100vh는 화면이랑 같은 높이를 뜻함 */
+}
+#section .slide3 {
+  /* background-image: url(../image/mainslide1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  background: url(../img/slide03.jpg) no-repeat center / cover;
+  /* 배경이미지는 높이가 있어야 보임. 100vh는 화면이랑 같은 높이를 뜻함 */
 }
 #section .slide .text {
-  /* 자식박스를 부모박스 정중앙에 배치시키는 공식 */
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+#section .slide .text h2 {
+  font-size: 50px;
+  margin: 30px 0 50px;
+  opacity: 0;
+  transform: translate3d(0, 100%, 0);
+}
+#section .slick-current.slick-active.slide .text h2 {
+  animation: fadeInDown 1s 1 both 1.3s;
+}
+#section .slide .text p {
+  font-size: 20px;
+  opacity: 0;
+  transform: translate3d(0, 100%, 0);
+}
+#section .slick-current.slick-active.slide .text p {
+  animation: fadeInDown 1s 1 both 0.3s;
+}
+#section .slide .text a {
+  padding: 10px 16px;
+  font-size: 18px;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  opacity: 0;
+  transform: translate3d(0, 100%, 0);
+  display: inline-block;
+}
+#section .slick-current.slick-active.slide .text a {
+  animation: fadeInDown 1s 1 both 2.3s;
+}
+
+#section .ourcompany {
+  padding: 50px 0 80px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#section .ourcompany h2 {
+  font-size: 26px;
+  font-family: "Nanum Gothic", sans-serif;
+  color: #414141;
+  padding-bottom: 10px;
+  text-align: center;
+}
+#section .ourcompany p.slogun {
+  font-size: 14px;
+  color: #666;
+  margin: 1.4px 0 30px;
+  text-align: center;
+}
+#section .ourcompany ul {
+  overflow: hidden;
+}
+#section .ourcompany ul li {
+  float: left;
+  width: 33.33%;
+  padding: 0 15px;
+}
+#section .ourcompany ul li h3 {
+  font-size: 22px;
+  color: #414141;
+  margin: 20px 0 32px;
+  font-weight: normal;
+}
+#section .ourcompany ul li p {
+  font-size: 14px;
+  color: #666;
+  margin: 1.4px 0 30px;
+}
+#section .ourcompany ul li a {
+  display: inline-block;
+  font-size: 12px;
+  color: #222;
+  padding: 10px 30px;
+  border: 1px solid #222;
+  transition: all 0.2s;
+  border-radius: 2px;
+}
+#section .ourcompany ul li a:hover {
+  color: #fff;
+  background: #000;
+}
+#section .ourcompany ul li div.photo {
+  overflow: hidden;
+}
+#section .ourcompany ul li img {
+  transition: all 0.2s;
+}
+#section .ourcompany ul li img:hover {
+  transform: scale(1.1);
+}
+
+#section .product {
+  padding: 50px 0;
+  text-align: center;
+}
+#section .product .title h2 {
+  color: #414141;
+  font-size: 36px;
+}
+#section .product .title p {
+  color: #666;
+  font-size: 14px;
+  margin: 10px 0 30px;
+}
+#section .product .title a {
+  /* inline요소인 a는 margin 상하값이 적용이 안되므로 block 속성을 추가하여 문제를 해결함 */
+  display: inline-block;
+  color: #222;
+  font-size: 12px;
+  margin: 0 0 40px;
+  padding: 10px 30px;
+  border: 1px solid #000;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+#section .product .title a:hover {
+  color: #fff;
+  background: #000;
+}
+
+#section .product ul.best {
+  overflow: hidden;
+}
+#section .product ul.best li {
+  float: left;
+  width: 33.33%;
+  padding: 0 5px;
+}
+#section .product ul.best li h3 {
+  font-size: 13px;
+  color: #333;
+  padding: 26px 0 13px;
+}
+#section .product ul.best li p {
+  font-size: 12px;
+  color: #999;
+}
+#section .product ul.best li .photo img {
+  transition: all 0.5s;
+}
+#section .product ul.best li .photo img:hover {
+  opacity: 0.6;
+}
+
+#section .notice {
+  background: url(../img/subslide.jpg) center / cover;
+  background-attachment: fixed;
+  height: 456px;
+  position: relative;
+}
+#section .notice .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+#section .notice .slideOuter2 {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* 자식박스를 부모박스 정중앙에 배치시키는 공식 */
-  width: 100%; /* 자식의 글씨크기가 커서 두줄로 되면 이 속성을 추가함 */
+  width: 100%;
+}
+#section .notice .slideOuter2 .slide02 {
   color: #fff;
   text-align: center;
 }
-#section .slide .text h2 {
-  font-size: 100px;
-  opacity: 0;
-  transform: translate3d(0, 100%, 0);
+#section .notice .slideOuter2 .slide02 .text h2 {
+  font-size: 50px;
 }
-#section .slide .text p {
-  font-size: 22px;
-  opacity: 0;
-  transform: translate3d(0, 100%, 0);
-  margin: 30px 0 80px;
+#section .notice .slideOuter2 .slide02 .text h3 {
+  font-size: 24px;
+  margin: 32px 0;
 }
-#section .slide .text a {
-  font-size: 17px;
-  opacity: 0;
-  transform: translate3d(0, 100%, 0);
-  color: #14233e;
-  background: #fff;
-  padding: 15px 35px;
-  border-radius: 50px;
-  display: inline-block;
-}
-#section .slide .text a:hover {
-  font-size: 17px;
-  color: #14233e;
-  background: greenyellow;
-  padding: 15px 35px;
-  border-radius: 50px;
-  font-weight: bold;
-  transition: all 0.2s;
-}
-#section .slick-current.slick-active .slide .text h2 {
-  animation: fadeInUp 1s 1 both 0.3s;
-}
-#section .slick-current.slick-active .slide .text p {
-  animation: fadeInUp 1s 1 both 1.3s;
-}
-#section .slick-current.slick-active .slide .text a {
-  animation: fadeInUp 1s 1 both 2.3s;
-}
-
-/* section business */
-#section .business ul {
-  overflow: hidden;
-}
-#section .business ul li {
-  float: left;
-  width: 25%;
-  text-align: center;
-  height: 600px;
-  padding: 100px 30px;
-}
-#section .business ul li:nth-child(2),
-#section .business ul li:nth-child(4) {
-  background-color: rgb(239, 239, 239);
-}
-#section .business ul li h3 {
-  font-size: 30px;
-  color: #333;
-}
-#section .business ul li img {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-  padding: 20px 40px;
-  margin-bottom: 50px;
-}
-#section .business ul li h3 span {
-  display: block;
-  font-weight: lighter;
-  margin: 20px 0px 60px;
-}
-#section .business ul li a {
-  border: 2px solid #14233e;
-  padding: 13px 29px;
-  border-radius: 50px;
-  color: #14233e;
-  font-size: 20px;
-  font-weight: bold;
-  transition: all 0.2s;
-}
-#section .business ul li a:hover {
-  border: 2px solid #14233e;
-  background-color: #14233e;
-  padding: 13px 29px;
-  border-radius: 50px;
-  color: rgb(255, 255, 255);
-  font-size: 20px;
-  font-weight: bold;
-}
-
-/* product */
-
-#section .product {
-  background: url(../img/product_bg.jpg) center / cover;
-  padding: 100px 0;
-}
-#section .product .row {
-  overflow: hidden;
-}
-
-#section .product .text {
-  float: left;
-  width: 50%;
-  color: #fff;
-}
-#section .product .text h2 {
-  font-size: 70px;
-  opacity: 0;
-}
-#section .product .text .button a {
+#section .notice .slideOuter2 .slide02 .text p {
   font-size: 14px;
-  padding: 15px 30px;
-  border: 2px solid #fff;
-  display: inline-block;
-  border-radius: 5px;
-  margin-right: 10px;
-  opacity: 0;
-  transform: translate3d(0, 100%, 0);
+  margin: 0 0 35px;
 }
-#section .product .text .button a:nth-child(1) {
-  background: #fff;
-  color: #333;
+#section .notice .slideOuter2 .slide02 .text a {
+  font-size: 12px;
+  padding: 10px 30px;
+  border: 1px solid #fff;
+  border-radius: 2px;
 }
-#section .product .photo {
-  float: left;
-  width: 50%;
-  text-align: center;
-  padding-top: 70px;
-}
-#section .customer {
-  background: #edf0f4;
+
+#section .companyinfo {
   padding: 50px 0;
 }
-#section .customer h2 {
-  font-weight: lighter;
-  font-size: 70px;
-  color: #333;
-  text-align: center;
-  margin-bottom: 30px;
-}
-#section .customer .row div {
+#section .companyinfo ul {
   overflow: hidden;
 }
-#section .customer .row div span {
-  width: 33.33%;
+#section .companyinfo ul li {
   float: left;
-  padding: 0 20px;
+  width: 25%;
+  color: #fff;
+  padding: 20px 15px;
+  text-align: center;
 }
-#section .customer .row div span img {
-  border: 1px solid rgb(227, 227, 227);
+#section .companyinfo ul li:nth-child(1) {
+  background: #72c9c3;
+}
+#section .companyinfo ul li:nth-child(2) {
+  background: #364759;
+}
+#section .companyinfo ul li:nth-child(3) {
+  background: #e0e1e1;
+  color: #222;
+}
+#section .companyinfo ul li:nth-child(4) {
+  background: #307cae;
 }
 
-/* copyright */
-
-#footer .address {
-  background: #212934;
-  padding: 30px 0px 34px;
+#section .companyinfo ul li > a {
+  height: 260px;
+  display: inline-block;
+}
+#section .companyinfo ul li > a h2 {
+  font-size: 30px;
+  margin: 30px 0;
+}
+#section .companyinfo ul li > a p {
+  font-size: 14px;
+  margin: 30px 0;
+  letter-spacing: -0.5px;
+  height: 54px;
+}
+#section .contact {
+  padding: 50px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+#section .contact h2 {
+  font-size: 36px;
+  color: #414141;
+  margin: 0 0 50px;
+}
+#section .contact .position {
+  font-size: 14px;
+  color: #444;
+}
+#section .contact .position h3 {
+  font-size: 26px;
+  color: #414141;
+  margin: 50px 0 0;
+}
+#section .contact .position .addr {
   color: #666;
-  font-size: 16px;
+  margin: 2px 0 30px;
 }
-#footer .address pre {
-  font-family: "Noto Sans KR", sans-serif;
-  line-height: 1.8em;
-  margin: 16px 0;
+#section .contact .sns {
+  text-align: center;
 }
-#footer .copyright {
-  background: #1d242d;
-  padding: 20px 0;
-  color: rgba(255, 255, 255, 0.66);
-  font-size: 13px;
+#section .contact .sns a {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  border-radius: 50%;
+  background: #32343e;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  margin: 30px 5px;
+}
+
+#footer {
+  padding: 40px 0;
+  background: #ededed;
+  text-align: center;
+  font-size: 12px;
+}
+#footer h1 {
+  font-size: 14px;
+}
+#footer address {
+  font-style: normal;
+  margin: 20px 0 10px;
+}
+#footer address p {
+  line-height: 1.5em;
+}
+#footer address p span {
+  margin: 0 10px;
+}
+#footer address p:nth-child(2) span:nth-child(4) {
+  display: block;
 }
