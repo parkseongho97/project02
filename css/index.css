@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@100;200;300;400;500&display=swap");
 
 * {
   margin: 0;
@@ -29,8 +29,8 @@ img {
 }
 
 #header {
+  border: 0px solid #000;
   background: #fff;
-  background-color: #fff;
   position: fixed;
   top: 0;
   left: 0;
@@ -48,7 +48,7 @@ img {
 #header #nav .depth1 > li {
   float: left;
   font-size: 14px;
-  color: #202020;
+  color: #000;
   font-family: "Noto Sans KR";
   font-weight: 900;
   margin-left: 30px;
@@ -64,17 +64,19 @@ img {
 #header #nav .depth1 > li > a::after {
   display: block;
   position: absolute;
-  top: 0;
+  top: 2px;
   right: 10px;
-  font-family: "FontAwesome";
   font-size: 10px;
-  content: "\f16c";
+  font-family: "FontAwesome";
+  content: "\f107";
   opacity: 0.3;
 }
 #header #nav .depth1 > li > a:hover {
   background: rgba(0, 0, 0, 0.03);
 }
-
+#header #nav .depth1 > li:hover .depth2 {
+  display: block;
+}
 #header #nav .depth2 {
   position: absolute;
   top: 100%;
@@ -90,15 +92,70 @@ img {
 #header #nav .depth2 > li > a {
   display: block;
   padding: 7px 15px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.05);
 }
 #header #nav .depth2 > li > a:hover {
   display: block;
   padding: 7px 15px;
   background: rgba(0, 0, 0, 0.15);
 }
-#header #nav .depth1 > li:hover .depth2 {
-  display: block;
+
+/* 슬라이드 구역 */
+#section .slideOuter .slideInner {
+  position: relative;
+}
+#section .slideOuter .slideInner button.slick-arrow {
+  border: none;
+  background: none;
+  font-size: 50px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+}
+#section .slideOuter .slideInner button.slick-next {
+  right: 50px;
+}
+#section .slideOuter .slideInner button.slick-prev {
+  left: 50px;
+  z-index: 999;
+}
+#section .slideOuter .slideInner ul.slick-dots {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 50px;
+}
+#section .slideOuter .slideInner ul.slick-dots li {
+  display: inline-block;
+  margin: 0 5px;
+}
+#section .slideOuter .slideInner ul.slick-dots li button {
+  width: 16px;
+  height: 16px;
+  text-indent: 9999px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border: 5px solid transparent;
+}
+#section .slideOuter .slideInner ul.slick-dots li.slick-active button {
+  background: #fff;
+  border: 5px solid #000;
+}
+
+/* 슬라이더 멈춤 버튼 */
+#section .slideOuter {
+  position: relative;
+}
+#section .slideOuter .plapau {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  font-size: 20px;
+  margin-left: 45px;
+  color: #000;
 }
 
 #section .slide {
@@ -107,10 +164,32 @@ img {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; */
-  background: url(../img/banner.jpg) no-repeat center / cover;
-  background-attachment: fixed;
   /* 배경이미지는 높이가 있어야 보임. 100vh는 화면이랑 같은 높이를 뜻함 */
   height: 100vh;
+}
+#section .slide1 {
+  /* background-image: url(../image/mainslide1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  background: url(../img/slide01.jpg) no-repeat center / cover;
+  /* 배경이미지는 높이가 있어야 보임. 100vh는 화면이랑 같은 높이를 뜻함 */
+}
+#section .slide2 {
+  /* background-image: url(../image/mainslide1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  background: url(../img/slide02.jpg) no-repeat center / cover;
+  /* 배경이미지는 높이가 있어야 보임. 100vh는 화면이랑 같은 높이를 뜻함 */
+}
+#section .slide3 {
+  /* background-image: url(../image/mainslide1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  background: url(../img/slide03.jpg) no-repeat center / cover;
+  /* 배경이미지는 높이가 있어야 보임. 100vh는 화면이랑 같은 높이를 뜻함 */
 }
 #section .slide .text {
   position: absolute;
@@ -121,18 +200,34 @@ img {
   text-align: center;
   color: #fff;
 }
-#section .slide .text p {
-  font-size: 20px;
-}
 #section .slide .text h2 {
   font-size: 50px;
   margin: 30px 0 50px;
+  opacity: 0;
+  transform: translate3d(0, 100%, 0);
+}
+#section .slick-current.slick-active.slide .text h2 {
+  animation: fadeInDown 1s 1 both 1.3s;
+}
+#section .slide .text p {
+  font-size: 20px;
+  opacity: 0;
+  transform: translate3d(0, 100%, 0);
+}
+#section .slick-current.slick-active.slide .text p {
+  animation: fadeInDown 1s 1 both 0.3s;
 }
 #section .slide .text a {
   padding: 10px 16px;
   font-size: 18px;
   border: 2px solid #fff;
   border-radius: 3px;
+  opacity: 0;
+  transform: translate3d(0, 100%, 0);
+  display: inline-block;
+}
+#section .slick-current.slick-active.slide .text a {
+  animation: fadeInDown 1s 1 both 2.3s;
 }
 
 #section .ourcompany {
@@ -198,7 +293,6 @@ img {
   padding: 50px 0;
   text-align: center;
 }
-
 #section .product .title h2 {
   color: #414141;
   font-size: 36px;
@@ -223,6 +317,7 @@ img {
   color: #fff;
   background: #000;
 }
+
 #section .product ul.best {
   overflow: hidden;
 }
@@ -231,7 +326,6 @@ img {
   width: 33.33%;
   padding: 0 5px;
 }
-
 #section .product ul.best li h3 {
   font-size: 13px;
   color: #333;
@@ -241,12 +335,13 @@ img {
   font-size: 12px;
   color: #999;
 }
-#section .product ul.best li .photo {
+#section .product ul.best li .photo img {
   transition: all 0.5s;
 }
-#section .product ul.best li .photo:hover {
+#section .product ul.best li .photo img:hover {
   opacity: 0.6;
 }
+
 #section .notice {
   background: url(../img/subslide.jpg) center / cover;
   background-attachment: fixed;
@@ -259,7 +354,7 @@ img {
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
 }
 #section .notice .slideOuter2 {
   position: absolute;
@@ -268,83 +363,68 @@ img {
   transform: translate(-50%, -50%);
   width: 100%;
 }
-#section .notice .slideOuter2 .slide2 {
-  text-align: center;
+#section .notice .slideOuter2 .slide02 {
   color: #fff;
-  font-family: "Noto Sans KR";
+  text-align: center;
 }
-#section .notice .slideOuter2 .slide2 .text h2 {
+#section .notice .slideOuter2 .slide02 .text h2 {
   font-size: 50px;
-  margin: ;
 }
-#section .notice .slideOuter2 .slide2 .text h3 {
+#section .notice .slideOuter2 .slide02 .text h3 {
   font-size: 24px;
   margin: 32px 0;
 }
-#section .notice .slideOuter2 .slide2 .text p {
+#section .notice .slideOuter2 .slide02 .text p {
   font-size: 14px;
-  margin: 0 0 40px;
+  margin: 0 0 35px;
 }
-#section .notice .slideOuter2 .slide2 .text a {
+#section .notice .slideOuter2 .slide02 .text a {
   font-size: 12px;
-  padding: 15px 30px;
-  border: 1px solid white;
+  padding: 10px 30px;
+  border: 1px solid #fff;
   border-radius: 2px;
 }
-#section .notice .slideOuter2 .slide2 .text a:hover {
-  font-size: 12px;
-  background-color: white;
-  color: rgb(26, 26, 26);
-  font-weight: bold;
-  padding: 15px 30px;
-  border: 1px solid white;
-  border-radius: 2px;
-  transition: all 0.1s;
-}
+
 #section .companyinfo {
-  padding: 50px 0px;
+  padding: 50px 0;
 }
 #section .companyinfo ul {
   overflow: hidden;
 }
 #section .companyinfo ul li {
   float: left;
-  padding: 30px 15px;
   width: 25%;
-  text-align: center;
   color: #fff;
-  font-family: "Noto Sans KR", sans-serif;
+  padding: 20px 15px;
+  text-align: center;
 }
-#section .companyinfo ul li a {
+#section .companyinfo ul li:nth-child(1) {
+  background: #72c9c3;
+}
+#section .companyinfo ul li:nth-child(2) {
+  background: #364759;
+}
+#section .companyinfo ul li:nth-child(3) {
+  background: #e0e1e1;
+  color: #222;
+}
+#section .companyinfo ul li:nth-child(4) {
+  background: #307cae;
+}
+
+#section .companyinfo ul li > a {
   height: 260px;
   display: inline-block;
 }
-#section .companyinfo ul li h2 {
+#section .companyinfo ul li > a h2 {
   font-size: 30px;
-  margin: 20px 0px 7px;
-  font-weight: lighter;
+  margin: 30px 0;
 }
-#section .companyinfo ul li p {
+#section .companyinfo ul li > a p {
   font-size: 14px;
-  margin: 30px 0px;
+  margin: 30px 0;
   letter-spacing: -0.5px;
   height: 54px;
-}
-#section .companyinfo ul li img {
-  padding: 10px 0px;
-}
-#section .companyinfo ul li.n1 {
-  background-color: #72c9c3;
-}
-#section .companyinfo ul li.n2 {
-  background-color: #364759;
-}
-#section .companyinfo ul li.n3 {
-  background-color: rgb(206, 206, 206);
-  color: rgb(22, 22, 22);
-}
-#section .companyinfo ul.row li.n4 {
-  background-color: #307cae;
 }
 #section .contact {
   padding: 50px 0;
@@ -360,7 +440,6 @@ img {
   font-size: 14px;
   color: #444;
 }
-
 #section .contact .position h3 {
   font-size: 26px;
   color: #414141;
@@ -374,17 +453,18 @@ img {
   text-align: center;
 }
 #section .contact .sns a {
+  display: inline-block;
   width: 44px;
   height: 44px;
   line-height: 44px;
-  display: inline-block;
-  border-radius: 100%;
-  background-color: #32343e;
+  border-radius: 50%;
+  background: #32343e;
   color: #fff;
   font-size: 20px;
   text-align: center;
   margin: 30px 5px;
 }
+
 #footer {
   padding: 40px 0;
   background: #ededed;
@@ -396,7 +476,7 @@ img {
 }
 #footer address {
   font-style: normal;
-  margin: 20px 0px 10px;
+  margin: 20px 0 10px;
 }
 #footer address p {
   line-height: 1.5em;
@@ -404,6 +484,6 @@ img {
 #footer address p span {
   margin: 0 10px;
 }
-#footer address p .email {
+#footer address p:nth-child(2) span:nth-child(4) {
   display: block;
 }
