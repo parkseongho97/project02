@@ -9,6 +9,11 @@
 ul {
   list-style: none;
 }
+.blind {
+  position: absolute;
+  left: -9999px;
+  overflow: hidden;
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -31,37 +36,56 @@ img {
 #header {
   border: 0px solid #000;
   background: #fff;
-  position: fixed;
+  position: static;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 99;
 }
+#header .row {
+  display: flex;
+  justify-content: space-between;
+}
 #header h1 {
-  float: left;
-  border: 0px solid #000;
+  /* float: left; */
+
   padding: 20px 0;
 }
+#header .menuopen {
+  display: none;
+}
+
 #header #nav {
-  float: right;
+  /* float: right; */
+  display: flex;
+}
+#header #nav .depth1 {
+  display: flex;
 }
 #header #nav .depth1 > li {
-  float: left;
+  /* float: left; */
+  display: flex;
+  align-items: center;
   font-size: 14px;
-  color: #000;
+  color: #353535;
   font-family: "Noto Sans KR";
   font-weight: 900;
-  margin-left: 30px;
+  margin-left: 0px;
   position: relative;
 }
+#header .menuopen {
+  display: none;
+}
 #header #nav .depth1 > li > a {
-  height: 88.3px;
-  line-height: 88.3px;
-  display: block;
+  /* height: 88.3px;
+  line-height: 88.3px; */
+  display: flex;
+  align-items: center;
   padding: 0 25px 0 15px;
   position: relative;
 }
-#header #nav .depth1 > li > a::after {
+#header #nav .depth1 > li:nth-child(1) > a::after,
+#header #nav .depth1 > li:nth-child(4) > a::after {
   display: block;
   position: absolute;
   top: 2px;
@@ -92,11 +116,13 @@ img {
 #header #nav .depth2 > li > a {
   display: block;
   padding: 7px 15px;
+
   background: rgba(0, 0, 0, 0.05);
 }
 #header #nav .depth2 > li > a:hover {
   display: block;
   padding: 7px 15px;
+
   background: rgba(0, 0, 0, 0.15);
 }
 
@@ -158,16 +184,16 @@ img {
   color: #000;
 }
 
-#section .slide {
+#section .slideOuter .slide {
   position: relative;
   /* background-image: url(../image/mainslide1.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; */
   /* 배경이미지는 높이가 있어야 보임. 100vh는 화면이랑 같은 높이를 뜻함 */
-  height: 100vh;
+  height: 60vw;
 }
-#section .slide1 {
+#section .slideOuter .slide1 {
   /* background-image: url(../image/mainslide1.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -175,7 +201,7 @@ img {
   background: url(../img/slide01.jpg) no-repeat center / cover;
   /* 배경이미지는 높이가 있어야 보임. 100vh는 화면이랑 같은 높이를 뜻함 */
 }
-#section .slide2 {
+#section .slideOuter .slide2 {
   /* background-image: url(../image/mainslide1.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -183,7 +209,7 @@ img {
   background: url(../img/slide02.jpg) no-repeat center / cover;
   /* 배경이미지는 높이가 있어야 보임. 100vh는 화면이랑 같은 높이를 뜻함 */
 }
-#section .slide3 {
+#section .slideOuter .slide3 {
   /* background-image: url(../image/mainslide1.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -191,7 +217,7 @@ img {
   background: url(../img/slide03.jpg) no-repeat center / cover;
   /* 배경이미지는 높이가 있어야 보임. 100vh는 화면이랑 같은 높이를 뜻함 */
 }
-#section .slide .text {
+#section .slideOuter .slide .text {
   position: absolute;
   top: 60%;
   left: 50%;
@@ -200,24 +226,26 @@ img {
   text-align: center;
   color: #fff;
 }
-#section .slide .text h2 {
-  font-size: 50px;
+#section .slideOuter .slide .text h2 {
+  font-size: 5vw;
   margin: 30px 0 50px;
   opacity: 0;
   transform: translate3d(0, 100%, 0);
+  word-break: keep-all;
 }
-#section .slick-current.slick-active.slide .text h2 {
+#section .slideOuter .slick-current.slick-active.slide .text h2 {
   animation: fadeInDown 1s 1 both 1.3s;
 }
-#section .slide .text p {
+#section .slideOuter .slide .text p {
   font-size: 20px;
   opacity: 0;
   transform: translate3d(0, 100%, 0);
+  word-break: keep-all;
 }
-#section .slick-current.slick-active.slide .text p {
+#section .slideOuter .slick-current.slick-active.slide .text p {
   animation: fadeInDown 1s 1 both 0.3s;
 }
-#section .slide .text a {
+#section .slideOuter .slide .text a {
   padding: 10px 16px;
   font-size: 18px;
   border: 2px solid #fff;
@@ -226,7 +254,7 @@ img {
   transform: translate3d(0, 100%, 0);
   display: inline-block;
 }
-#section .slick-current.slick-active.slide .text a {
+#section .slideOuter .slick-current.slick-active.slide .text a {
   animation: fadeInDown 1s 1 both 2.3s;
 }
 
@@ -248,12 +276,15 @@ img {
   text-align: center;
 }
 #section .ourcompany ul {
-  overflow: hidden;
+  /* overflow: hidden; */
+  display: flex;
 }
 #section .ourcompany ul li {
-  float: left;
-  width: 33.33%;
+  /* float: left; */
+  flex: 1;
+  /* width: 33.33%; */
   padding: 0 15px;
+  margin-bottom: 40px;
 }
 #section .ourcompany ul li h3 {
   font-size: 22px;
@@ -319,11 +350,13 @@ img {
 }
 
 #section .product ul.best {
-  overflow: hidden;
+  /* overflow: hidden; */
+  display: flex;
 }
 #section .product ul.best li {
-  float: left;
-  width: 33.33%;
+  /* float: left; */
+  /* width: 33.33%; */
+  flex: 1;
   padding: 0 5px;
 }
 #section .product ul.best li h3 {
@@ -383,17 +416,41 @@ img {
   padding: 10px 30px;
   border: 1px solid #fff;
   border-radius: 2px;
+  display: inline-block;
+}
+
+/* 슬라이드2 도트버튼 스타일 */
+#section .notice .slideOuter2 .slick-dots {
+  text-align: center;
+  margin-top: 40px;
+}
+#section .notice .slideOuter2 .slick-dots li {
+  display: inline-block;
+  margin: 0 5px;
+}
+#section .notice .slideOuter2 .slick-dots li button {
+  width: 20px;
+  height: 5px;
+  background: #3e3e3e;
+  border: none;
+  text-indent: 9999px;
+  overflow: hidden;
+}
+#section .notice .slideOuter2 .slick-dots li.slick-active button {
+  background: #00aeff;
 }
 
 #section .companyinfo {
   padding: 50px 0;
 }
 #section .companyinfo ul {
-  overflow: hidden;
+  /* overflow: hidden; */
+  display: flex;
 }
 #section .companyinfo ul li {
-  float: left;
-  width: 25%;
+  /* float: left; */
+  /* width: 25%; */
+  flex: 1 1;
   color: #fff;
   padding: 20px 15px;
   text-align: center;
